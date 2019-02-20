@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	
+</head>
+<body>
+	<div>123423</div>
+	<div id="p1">123</div>
+	<script type="text/javascript" src="../public/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../public/js/art_template.js"></script>
+	<script type="text/html" id="pp">
+		<div>{{p1}}</div>
+		<div>{{p2}}</div>
+		<div>{{p3}}</div>
+		<div>{{p4}}</div>
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		var p = {p1:'邓刚',p2:'wode',p3:'nide',p4:'haha'}
+		$("#p1").html( template('pp',p)) 
+		})
+	</script>
+</body>
+</html>

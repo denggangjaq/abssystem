@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>会员管理菜单</title>
+	<link rel="stylesheet" href="../public/css/animate.css">
+	<link rel="stylesheet" href="../public/css/base.css">
+	<link rel="stylesheet" href="../public/css/l_left_style.css">
+</head>
+<body>
+	<ul class="menber-box Animate">
+		<li class="animated"><a href="">商品管理</a></li>
+		<li class="animated"><a href="">库存查询</a></li>
+		<li class="animated"><a href="">库存增加</a></li>
+		<li class="animated"><a href="">库存减少</a></li>
+	</ul>
+<script src="../public/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".Animate li").mouseover(function(){
+            
+            $(this).addClass('pulse');
+        });
+        $(".Animate li").mouseout(function(){
+            $(this).removeClass('pulse');
+        });
+	})
+</script>
+</body>
+</html>

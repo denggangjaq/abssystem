@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../public/css/left_menu.css">
+</head>
+<bod>
+<div class="treebox">
+	<ul class="menu">
+		<li class="level1">
+			<a href="#none"><em class="ico ico1"></em>会员管理<i class="down"></i></a>
+			<ul class="level2">
+				<li><a href="../menber_management.html" target="iframe_a">会员管理</a></li>
+				<li><a href="javascript:;">会员多级显示</a></li>
+			</ul>
+		</li>
+		<li class="level1">
+			<a href="#none"><em class="ico ico2"></em>商品管理<i></i></a>
+			<ul class="level2">
+				<li><a href="javascript:;">类别管理</a></li>
+				<li><a href="javascript:;">商品添加</a></li>
+				<li><a href="javascript:;">商品修改</a></li>
+				<li><a href="javascript:;">商品删除</a></li>
+			</ul>
+		</li>
+		<li class="level1">
+			<a href="#none"><em class="ico ico2"></em>统计报表<i></i></a>
+			<ul class="level2">
+				<li><a href="javascript:;">会员情况统计</a></li>
+				<li><a href="javascript:;">会员消费统计</a></li>
+				<li><a href="javascript:;">会员充值统计</a></li>
+				<li><a href="javascript:;">商品消费统计</a></li>
+			</ul>
+		</li>
+		
+	</ul>
+</div>
+
+<!-- 引入 jQuery -->
+<script src="../public/js/jquery-3.3.1.min.js"></script>
+<script src="../public/js/easing.js"></script>
+<script>
+//等待dom元素加载完毕.
+$(function(){
+	$(".treebox .level1>a").click(function(){
+		$(this).addClass('current')   //给当前元素添加"current"样式
+		.find('i').addClass('down')   //小箭头向下样式
+		.parent().next().slideDown('slow','easeOutQuad')  //下一个元素显示
+		.parent().siblings().children('a').removeClass('current')//父元素的兄弟元素的子元素去除"current"样式
+		.find('i').removeClass('down').parent().next().slideUp('slow','easeOutQuad');//隐藏
+		 return false; //阻止默认时间
+	});
+	/*$('html').click(function(){
+		$(".treebox .level1>a").addClass('current')   //给当前元素添加"current"样式
+		.find('i').removeClass('down').parent().next().slideUp('slow','easeOutQuad');
+	})*/
+})
+</script>
+
+</body>
+</html>

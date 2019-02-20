@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>右侧内容</title>
+	<link rel="stylesheet" href="../public/css/base.css">
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../public/css/layui.css">
+	<link rel="stylesheet" href="../public/css/r_menber_management.css">
+	<!-- 弹出框 样式-->
+<style type="text/css" media="screen">
+.menber_box{width: 60%; background-color: #fff; position: relative; padding-bottom: 50px; margin-left: -400px }
+.add-title{width: 100%; height: 40px; font:400 16px/40px "SimHei"; text-align: center; font-weight: bold; color:#fff; background-color: #009F95 }
+a.close-add{position: absolute; right: 10px; top: 10px; color:#000; font:600 15px/15px "宋体"; }
+</style>
+</head>
+<body style="background:url(../public/images/bg.png) no-repeat;width: 100%;background-size: 100%">
+	<div class="serch_box">
+		<form action="">
+					<div class="serch serch-text"><input type="text" placeholder="输入会员卡号和姓名"></div>
+					<div class="serch serch-btn"><button type="submit">搜索</button></div>
+		</form>
+	</div>
+	<div class="menber-list">
+	</div>
+	<ul class="menber-ul clear">
+			<li onClick="TGDialogS('addMenber')">添加提醒</li>
+			<li onClick="TGDialogS('addMenber')">添加会员</li>
+			<li onClick="TGDialogS('cardNumber')">会员充值</li>
+			<li onClick="TGDialogS('refundNumber')">会员返款</li>
+			<li onClick="TGDialogS('numberExpense')">会员消费</li>
+			<li>其他操作</li>
+	</ul>
+		<!-- <table class="table table-bordered"  id="menberbox">
+			<tr class="table-header">
+				<td>会员卡号</td>
+				<td>加入日期</td>
+				<td>姓名</td>
+				<td>车牌号</td>
+				<td>优惠方式</td>
+				<td>会员卡等级</td>
+				<td>联系地址</td>
+				<td>其他操作</td>
+			</tr>
+		</table> -->
+	<table class="layui-table" lay-filter="demo11" id="menbers">
+		
+	</table>
+	<div class="page-box">
+		<div class="menber-table" id="menber-paging"></div>
+	</div>
+
+
+<!-- 会员弹出框 -->
+<div class="dialog menber_box" id="addMenber" style="display:none">
+    <div class="add-title">添加会员</div>
+    <a class="close-add" href="javascript:showDialog.hide()" title="关闭">×</a>
+   <form action="">
+    <div class="information-box clearfix">
+    	<h4 class="menber-information-title">会员信息</h4>
+    	
+    		<div class="menber-information-text">
+    			<label>会员卡号:<input type="text" name="" value=""></label>
+	    		<label>会员姓名:<input type="text" name="" value=""></label>
+	    		<label>会员等级:
+	    				<select>
+						  <option value ="">普通会员</option>
+						  <option value="">中级会员</option>
+						  <option value="">高级会员</option>
+						</select>
+				</label>
+				<label>会员密码:<input type="text" name="" value=""></label>
+				<label>确认密码:<input type="text" name="" value=""></label>
+				<label>会员折扣:<input type="text" name="" value="0.9" disabled="disabled"></label>
+				<label>会员年龄:<input type="text" name="" value=""></label>
+				<label>会员电话:<input type="text" name="" value=""></label>
+				<div class="adress">
+					<label>会员地址:<input type="text" name="" value=""></label>
+				</div>
+    		</div>
+    </div>
+    <div class="btn-ser">
+					<a class="btn btn-primary">添加</a>&nbsp;
+					<a class="btn btn-primary" href="javascript:showDialog.hide()">取消</a>
+	</div>
+</form>
+</div>
+<!-- 修改会员信息 -->
+<div class="dialog menber_box" id="updateMenber" style="display:none">
+    <div class="add-title">修改信息</div>
+    <a class="close-add" href="javascript:showDialog.hide()" title="关闭">×</a>
+   <form action="">
+    <div class="information-box clearfix">
+    	<h4 class="menber-information-title">会员信息</h4>
+    	
+    		<div class="menber-information-text">
+    			<label>会员卡号:<input type="text" name="" value=""></label>
+	    		<label>会员姓名:<input type="text" name="" value=""></label>
+	    		<label>会员等级:
+	    				<select>
+						  <option value ="">普通会员</option>
+						  <option value="">中级会员</option>
+						  <option value="">高级会员</option>
+						</select>
+				</label>
+				<label>会员密码:<input type="text" name="" value=""></label>
+				<label>确认密码:<input type="text" name="" value=""></label>
+				<label>会员折扣:<input type="text" name="" value="0.9" disabled="disabled"></label>
+				<label>会员年龄:<input type="text" name="" value=""></label>
+				<label>会员电话:<input type="text" name="" value=""></label>
+				<div class="adress">
+					<label>会员地址:<input type="text" name="" value=""></label>
+				</div>
+    		</div>
+    </div>
+    <div class="btn-ser">
+					<a class="btn btn-primary">修改</a>&nbsp;
+					<a class="btn btn-primary" href="javascript:showDialog.hide()">取消</a>
+	</div>
+</form>
+</div>
+<!-- 会员充值卡号输入窗口 -->
+<div class="dialog menber_box" id="cardNumber" style="display:none">
+    <div class="add-title">卡号</div>
+    <a class="close-add" href="javascript:showDialog.hide()" title="关闭">×</a>
+   <form action="">
+		<div class="card_box">
+				<label>请输入充值卡号:<input type="number" name="" value=""></label>
+		</div>
+    <div class="btn-rene">
+					<a class="btn btn-primary" onClick="TGDialogS('renewalMenber')">去充值</a>&nbsp;
+					<a class="btn btn-primary" href="javascript:showDialog.hide()">取消</a>
+	</div>
+	</form>
+</div>
+<!-- 会员还款卡号输入窗口 -->
+<div class="dialog menber_box" id="refundNumber" style="display:none">
+    <div class="add-title">卡号</div>
+    <a class="close-add" href="javascript:showDialog.hide()" title="关闭">×</a>
+   <form action="">
+		<div class="card_box">
+				<label>请输入还款卡号:<input type="number" name="" value=""></label>
+		</div>
+    <div class="btn-rene">
+					<a class="btn btn-primary" onClick="alert('开发中')">去返款</a>&nbsp;
+					<a class="btn btn-primary" href="javascript:showDialog.hide()">取消</a>
+	</div>
+	</form>
+</div>
+<!-- 会员充值 -->
+<div class="dialog menber_box" id="renewalMenber" style="display:none">
+    <div class="add-title">会员充值</div>
+    <a class="close-add" href="javascript:showDialog.hide()" title="关闭">×</a>
+   <form action="">
+    <div class="information-box clearfix">
+    	<h4 class="menber-information-title">会员信息</h4>
+    		<div class="menber-information-text">
+    			<label>会员卡号:<span class="menber-i">0001</span></label>
+	    		<label>车主姓名:<span class="menber-i">小红</span></label>
+	    		<label>优惠方式:<span class="menber-i">实际款=所付款*1</span></label>
+				<label>卡内余额:<span class="menber-i">23:00</span></label>
+    		</div>
+    </div>
+	<div class="menber-rene">
+		<div class="rene-box">
+			<label>续费金额: <input type="text" placeholder="00:00"></label>
+			<label>实际续费: <input type="text" placeholder="00:00"></label>
+			<div class="adress">
+					<label>备注信息:<input type="text" name="" value=""></label>
+				</div>
+		</div>
+	</div>
+    <div class="btn-rene">
+					<a class="btn btn-primary" onClick="TGDialogS('chargingWindow')">确认充值</a>&nbsp;
+					<a class="btn btn-primary" href="javascript:showDialog.hide()">取消充值</a>
+	</div>
+	</form>
+</div>
+<!-- 收费窗口 -->
+<div class="dialog menber_box" id="chargingWindow" style="display:none">
+    <div class="add-title">收费窗口</div>
+    <a class="close-add" href="javascript:showDialog.hide()" title="关闭">×</a>
+   <form action="">
+   	 <div class="change-box">
+    	<div class="change-b">
+			<div for="">应收金额:<span class="change-text">￥21.33</span></div>
+			<div for="">实收金额:<input type="number" class="change-input" placeholder="请输入数字" maxlength="3"></div>
+			<div for="">找零金额:<span  class="change-text">￥1,234.24</span></div>
+			<div for="">付款方式:<span  class="change-text">现金支付</span></div>
+    	</div>
+    </div>
+    	<!-- 方式选者 -->
+    <div class="change-method">
+    	<p>选择付款方式:</p>
+    	<label class="radio-inline">
+  		<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked="checked">现金(1)
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">储值卡(2)
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">信用卡(3)
+		</label>	
+    </div>
+    <div class="btn-rene">
+					<a class="btn btn-primary" onClick="TGDialogS('chargingWindow')">确认续费</a>&nbsp;
+					<a class="btn btn-primary" href="javascript:showDialog.hide()">取消续费</a>
+	</div>
+   </form>
+</div>
+<script type="text/javascript" src="../public/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../db/menber.js"></script>
+<script type="text/javascript" src="../public/js/pc-milo.js"></script>
+<script type="text/javascript" src="../public/js/layui.js"></script>
+<script type="text/javascript" src="../public/js/art_template.js"></script>
+
+<script>
+	$(document).ready(function(){
+		var datas = menbers.data
+		//调用分页
+	layui.use(['laypage', 'layer'], function(){
+	  var laypage = layui.laypage
+	  ,layer = layui.layer;
+
+		  laypage.render({
+		    elem: 'menber-paging'
+		    ,count: datas.length,
+		    limit:5
+		    ,jump: function(obj){
+		      //模拟渲染
+		      document.getElementById('menbers').innerHTML = function(){
+		        var arr = []
+		        ,thisData = datas.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+		        arr.push('<tr class="table-header">'
+			        		+'<td>会员卡号</td>'
+							+'<td>加入日期</td>'
+							+'<td>姓名</td>'
+							+'<td>车牌号</td>'
+							+'<td>优惠方式</td>'
+							+'<td>会员卡等级</td>'
+							+'<td>联系地址</td>'
+							+'<td>其他操作</td>'
+							+'</tr>');
+		        layui.each(thisData, function(index, item){
+		          arr.push(	 '<tr class="tabler-content">'
+		          			+'<td>'+ item.menber_card +'</td>'
+		          			+'<td>'+ item.add_time +'</td>'
+		          			+'<td>'+ item.name +'</td>'
+		          			+'<td>'+ item.car_card +'</td>'
+		          			+'<td>'+ item.p_way +'</td>'
+		          			+'<td>'+ item.card_level +'</td>'
+		          			+'<td>'+ item.address +'</td>'
+		          			+'<td>'
+		          			+
+		          			 '<a href="javascript:;" onClick="TGDialogS('+'updateMenber'+')" class="btn btn-primary">修改</a>'
+							+'<a href="javascript:;" class="btn btn-primary">删除</a></td>'
+		          			+'</tr>'
+		          	);
+		        });
+
+		        return arr.join('');
+		      }();
+		    }
+		  });
+		})
+	})
+	//弹出框插件
+        function TGDialogS(e){
+            // 利用milo库引入dialog组件
+            need("biz.dialog",function(Dialog){
+                Dialog.show({
+                    id:e,
+                    bgcolor:'#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
+                    opacity:50 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
+                });
+            });
+        }
+        function closeDialog(){
+            // 利用milo库引入dialog组件
+            need("biz.dialog",function(Dialog){
+                Dialog.hide();
+            });
+        }
+</script>
+</body>
+</html>
